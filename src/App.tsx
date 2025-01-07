@@ -1,10 +1,12 @@
-import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import Container from "@mui/material/Container"
 import Link from "@mui/material/Link"
+import Menu from "@mui/material/Menu"
+import MenuItem from "@mui/material/MenuItem"
+import Slider from "@mui/material/Slider"
 import SvgIcon, { type SvgIconProps } from "@mui/material/SvgIcon"
 import Typography from "@mui/material/Typography"
-
+import { useState } from "react"
 function LightBulbIcon(props: SvgIconProps) {
   return (
     <SvgIcon {...props}>
@@ -46,32 +48,78 @@ function Copyright() {
   )
 }
 
+function PopoverMenu() {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const open = Boolean(anchorEl)
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
+  return (
+    <>
+      <Button
+        id="basic-button"
+        aria-controls={open ? "basic-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={handleClick}
+      >
+        Popover Menu
+      </Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        <MenuItem
+          onClick={handleClose}
+          className="py-2"
+        >
+          Small Item
+        </MenuItem>
+        <MenuItem
+          onClick={handleClose}
+          className="py-8"
+        >
+          Large Item
+        </MenuItem>
+      </Menu>
+    </>
+  )
+}
+
 export default function App() {
   return (
     <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
+      <div className="my-4">
         <Typography
           variant="h4"
           component="h1"
           sx={{ mb: 2 }}
         >
-          Material UI Vite.js example in TypeScript
+          Material UI Create React App example with Tailwind CSS in TypeScript
         </Typography>
-        <Button
-          variant="contained"
-          color="primary"
-        >
-          Primary
-        </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-        >
-          Secondary
-        </Button>
+        <Slider defaultValue={30} />
+        <Slider
+          defaultValue={30}
+          className="text-teal-600"
+        />
+        <Slider
+          defaultValue={30}
+          className="text-red-600"
+          slotProps={{ thumb: { className: "rounded-sm" } }}
+        />
+        <PopoverMenu />
         <ProTip />
         <Copyright />
-      </Box>
+      </div>
     </Container>
   )
 }
