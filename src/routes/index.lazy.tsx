@@ -9,6 +9,11 @@ import SvgIcon, { type SvgIconProps } from "@mui/material/SvgIcon"
 import Typography from "@mui/material/Typography"
 import { useState } from "react"
 
+import { createLazyFileRoute } from "@tanstack/react-router"
+
+export const Route = createLazyFileRoute("/")({
+  component: App,
+})
 function LightBulbIcon(props: SvgIconProps) {
   return (
     <SvgIcon {...props}>
@@ -97,7 +102,7 @@ function PopoverMenu() {
   )
 }
 
-export default function App() {
+function App() {
   return (
     <Container maxWidth="lg">
       <div className="my-4">
