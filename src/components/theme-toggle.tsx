@@ -1,6 +1,8 @@
 import { useRef, useState } from "react"
 
-import { DarkMode, Laptop, LightMode } from "@mui/icons-material"
+import SystemModeIcon from "@mui/icons-material/ContrastOutlined"
+import DarkModeIcon from "@mui/icons-material/DarkModeOutlined"
+import LightModeIcon from "@mui/icons-material/WbSunnyOutlined"
 import ClickAwayListener from "@mui/material/ClickAwayListener"
 import Fade from "@mui/material/Fade"
 import IconButton from "@mui/material/IconButton"
@@ -20,9 +22,9 @@ type ModeOption = {
 }
 
 const modeOptions: ModeOption[] = [
-  { mode: "light", label: "Light", Icon: LightMode },
-  { mode: "dark", label: "Dark", Icon: DarkMode },
-  { mode: "system", label: "System", Icon: Laptop },
+  { mode: "light", label: "Light", Icon: LightModeIcon },
+  { mode: "dark", label: "Dark", Icon: DarkModeIcon },
+  { mode: "system", label: "System", Icon: SystemModeIcon },
 ]
 
 const ThemeToggle = () => {
