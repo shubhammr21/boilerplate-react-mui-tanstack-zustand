@@ -49,6 +49,16 @@
         "noArrayIndexKey": "warn",
         "noExplicitAny": "off"
       },
+      "nursery": {
+        "useSortedClasses": {
+          "level": "warn",
+          "fix": "unsafe",
+          "options": {
+            "attributes": ["classList"],
+            "functions": ["clsx", "cva", "tw", "tw.*"]
+          }
+        }
+      },
       "correctness": {
         "noUnusedVariables": "warn",
         "useExhaustiveDependencies": "warn"
