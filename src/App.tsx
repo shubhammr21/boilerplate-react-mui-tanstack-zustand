@@ -1,3 +1,4 @@
+import ThemeToggle from "@/components/theme-toggle"
 import Button from "@mui/material/Button"
 import Container from "@mui/material/Container"
 import Link from "@mui/material/Link"
@@ -7,6 +8,7 @@ import Slider from "@mui/material/Slider"
 import SvgIcon, { type SvgIconProps } from "@mui/material/SvgIcon"
 import Typography from "@mui/material/Typography"
 import { useState } from "react"
+
 function LightBulbIcon(props: SvgIconProps) {
   return (
     <SvgIcon {...props}>
@@ -97,7 +99,7 @@ function PopoverMenu() {
 
 export default function App() {
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="lg">
       <div className="my-4">
         <Typography
           variant="h4"
@@ -116,6 +118,7 @@ export default function App() {
           className="text-red-600"
           slotProps={{ thumb: { className: "rounded-sm" } }}
         />
+        <ThemeToggle />
         <PopoverMenu />
         <ProTip />
         <Copyright />
